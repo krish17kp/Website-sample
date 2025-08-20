@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Teko:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-red: #d92323;
+        --light-gray: #f9fafb;
+        --text-dark: #111827;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--light-gray);
+        color: var(--text-dark);
+      }
+      .font-heading {
+        font-family: "Teko", sans-serif;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-6 md:p-12">
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div class="md:flex">
+          <!-- Profile Image -->
+          <div class="md:w-1/3">
+            <img
+              id="profileImage"
+              src=""
+              alt="Instructor Photo"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Profile Details -->
+          <div class="p-8 md:p-12 md:w-2/3">
+            <h1
+              id="profileName"
+              class="text-5xl md:text-7xl font-bold font-heading text-red-600"
+            ></h1>
+            <p
+              id="profileRank"
+              class="text-2xl font-semibold text-gray-600 mt-2"
+            ></p>
+
+            <div class="mt-8">
+              <h2
+                class="text-3xl font-heading font-semibold border-b-2 border-red-200 pb-2"
+              >
+                Biography
+              </h2>
+              <p id="profileBio" class="text-gray-700 mt-4 leading-relaxed"></p>
+            </div>
+
+            <div class="mt-8">
+              <h2
+                class="text-3xl font-heading font-semibold border-b-2 border-red-200 pb-2"
+              >
+                Specialties
+              </h2>
+              <ul
+                id="profileSpecialties"
+                class="list-disc list-inside text-gray-700 mt-4 space-y-2"
+              ></ul>
+            </div>
+
+            <div class="mt-10 text-center">
+              <a
+                href="index.html"
+                class="bg-red-600 text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition-colors"
+              >
+                &larr; Back to Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const instructorData = {
+          laximant: {
+            name: "Kyoshi Laximant Sarang",
+            rank: "Head Instructor, 7th Dan",
+            image: "images/kyoshi_photo.JPG",
+            bio: "With over three decades of unwavering dedication to the art of Shotokan Karate, Kyoshi Laximant Sarang is the founder and heart of our dojo. He began his journey as a young boy and has since trained with some of the world's most renowned masters. His philosophy is that karate is a path to perfecting one's character, and he instills this belief in every student he teaches.",
+            specialties: [
+              "Traditional Kata",
+              "Bunkai (Application Analysis)",
+              "Self-Defense Principles",
+              "Mentorship and Leadership",
+            ],
+          },
+          rakesh: {
+            name: "Shian Rakesh Tivrekar",
+            rank: "Pillar of the Dojo, 7th Dan",
+            image:
+              "https://placehold.co/400x400/F9FAFB/333333?text=Sensei+Rakesh", // Replace with actual image path
+            bio: "Shian Rakesh is a cornerstone of our dojo, known for his incredible precision and deep understanding of karate's artistic forms. His classes are a blend of intense physical training and philosophical insight, pushing students to find the spirit within the technique. He is a multi-time national kata champion and a respected judge at international competitions.",
+            specialties: [
+              "Advanced Kata",
+              "Competitive Forms",
+              "Breathing Techniques",
+              "Karate History",
+            ],
+          },
+          sagar: {
+            name: "Sensei Sagar",
+            rank: "Best in Physical Training, 3rd Dan",
+            image:
+              "https://placehold.co/400x400/F9FAFB/333333?text=Sensei+Sagar", // Replace with actual image path
+            bio: "Sensei Sagar is the driving force behind our dojo's physical conditioning programs. With a background in sports science, he designs training regimens that build explosive power, endurance, and agility. His high-energy classes are challenging but incredibly rewarding, shaping students into formidable and resilient competitors.",
+            specialties: [
+              "Kumite (Sparring) Strategy",
+              "Strength & Conditioning",
+              "Agility Drills",
+              "Competition Preparation",
+            ],
+          },
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const instructorId = params.get("instructor");
+        const data = instructorData[instructorId];
+
+        if (data) {
+          document.getElementById("profileImage").src = data.image;
+          document.getElementById("profileName").textContent = data.name;
+          document.getElementById("profileRank").textContent = data.rank;
+          document.getElementById("profileBio").textContent = data.bio;
+
+          const specialtiesList = document.getElementById("profileSpecialties");
+          data.specialties.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            specialtiesList.appendChild(li);
+          });
+        } else {
+          // Handle case where instructor is not found
+          document.querySelector(".container").innerHTML =
+            '<h1 class="text-center text-4xl font-bold">Instructor not found.</h1><div class="mt-10 text-center"><a href="index.html" class="bg-red-600 text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition-colors">&larr; Back to Website</a></div>';
+        }
+      });
+    </script>
+  </body>
+</html>
