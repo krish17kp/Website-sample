@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -20,278 +20,7 @@
     <!-- Feather Icons -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-    <style>
-      :root {
-        --primary-red: #d92323;
-        --dark-red: #a61c1c;
-        --gold: #ffc700;
-        --dark-gray: #1f2937;
-        --light-gray: #f9fafb;
-        --text-dark: #111827;
-        --text-light: #f9fafb;
-      }
-
-      body {
-        font-family: "Roboto", sans-serif;
-        background-color: var(--light-gray);
-        color: var(--text-dark);
-      }
-      .font-heading {
-        font-family: "Teko", sans-serif;
-        letter-spacing: 1px;
-      }
-      .navbar-light {
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-      .hero-section {
-        background-image: linear-gradient(
-            rgba(255, 255, 255, 0.2),
-            rgba(249, 250, 251, 1)
-          ),
-          url("https://placehold.co/1920x1080/e0e0e0/333333?text=Karate+Silhouette");
-        background-size: cover;
-        background-position: center;
-      }
-      .btn-primary {
-        background-image: linear-gradient(
-          to right,
-          var(--primary-red) 0%,
-          var(--dark-red) 100%
-        );
-        color: var(--text-light);
-        transition: all 0.4s ease;
-        box-shadow: 0 4px 15px rgba(217, 35, 35, 0.3);
-        background-size: 200% auto;
-      }
-      .btn-primary:hover {
-        background-position: right center; /* change the direction of the change here */
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(217, 35, 35, 0.4);
-      }
-      .section-title {
-        position: relative;
-        padding-bottom: 1rem;
-        color: var(--text-dark);
-      }
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background-image: linear-gradient(
-          to right,
-          var(--primary-red),
-          var(--gold)
-        );
-      }
-      .form-input {
-        background-color: #ffffff;
-        border: 1px solid #d1d5db;
-        color: var(--text-dark);
-        transition: all 0.3s ease;
-      }
-      .form-input:focus {
-        background-color: #ffffff;
-        outline: none;
-        border-color: var(--primary-red);
-        box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.2);
-      }
-      .instructor-card {
-        background-color: white;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-        border-bottom: 4px solid transparent;
-      }
-      .instructor-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        border-bottom-color: var(--primary-red);
-      }
-      .gallery-item {
-        overflow: hidden;
-        cursor: pointer;
-        border-radius: 1rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-      .gallery-img {
-        transition: transform 0.4s ease-in-out;
-      }
-      .gallery-item:hover .gallery-img {
-        transform: scale(1.1);
-      }
-
-      /* New Classes Section Styles */
-      .class-showcase-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
-      }
-      .class-showcase-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      }
-      .class-showcase-card .bg-image {
-        transition: transform 0.5s ease;
-      }
-      .class-showcase-card:hover .bg-image {
-        transform: scale(1.1);
-      }
-      .class-showcase-card .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0) 50%
-        );
-      }
-      .class-showcase-card .label {
-        position: absolute;
-        bottom: 1rem;
-        left: 1.5rem;
-        right: 1.5rem;
-        padding: 0.5rem 0;
-        background-color: var(--primary-red);
-        color: white;
-        font-family: "Teko", sans-serif;
-        text-align: center;
-        font-size: 1.75rem;
-        letter-spacing: 1px;
-        border-radius: 0.25rem;
-      }
-
-      /* Modals */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.7);
-        animation: fadeIn 0.3s ease;
-      }
-      .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 2.5rem;
-        border: none;
-        width: 90%;
-        max-width: 800px;
-        border-radius: 1rem;
-        position: relative;
-        animation: slideIn 0.4s ease;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      }
-      .gallery-modal-content {
-        max-width: 90vw;
-        max-height: 90vh;
-        background: transparent;
-        border: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-      }
-      .gallery-modal-content img {
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 0.5rem;
-      }
-      .close-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1.5rem;
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #9ca3af;
-        cursor: pointer;
-        transition: color 0.2s, transform 0.2s;
-        line-height: 1;
-      }
-      .close-btn:hover {
-        color: var(--primary-red);
-        transform: rotate(90deg);
-      }
-
-      /* Preloader */
-      #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .loader {
-        border: 4px solid #e5e7eb;
-        border-top: 4px solid var(--primary-red);
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-      }
-
-      /* Profile Dropdown */
-      .profile-dropdown {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 100%;
-        margin-top: 0.5rem;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-      }
-      #profile-container:hover .profile-dropdown {
-        display: block;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @keyframes slideIn {
-        from {
-          transform: translateY(-30px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="antialiased">
     <div id="preloader"><div class="loader"></div></div>
@@ -383,7 +112,7 @@
         });
 
         signInAnonymously(auth).catch((error) =>
-          console.error("Anonymous sign-in failed", error)
+          console.error("Anonymous sign-in failed", error),
         );
 
         loginBtn.onclick = () => openModal(loginModal);
@@ -417,7 +146,7 @@
             await createUserWithEmailAndPassword(
               auth,
               signupForm.email.value,
-              signupForm.password.value
+              signupForm.password.value,
             );
             authMessage.textContent = "Signup successful! Please log in.";
             authMessage.style.color = "#10B981";
@@ -435,7 +164,7 @@
             await signInWithEmailAndPassword(
               auth,
               loginForm.email.value,
-              loginForm.password.value
+              loginForm.password.value,
             );
             authMessage.textContent = "Login successful!";
             authMessage.style.color = "#10B981";
@@ -473,7 +202,7 @@
                 email: contactForm.email.value,
                 message: contactForm.message.value,
                 createdAt: new Date(),
-              }
+              },
             );
             formMessage.textContent = "Message sent successfully!";
             formMessage.style.color = "#10B981";
@@ -584,7 +313,7 @@
           <div id="profile-container" class="relative" style="display: none">
             <img
               id="profile-image"
-              src=""
+              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
               alt="User Profile"
               class="w-10 h-10 rounded-full cursor-pointer border-2 border-red-600"
             />
@@ -647,7 +376,7 @@
       <!-- Home Section -->
       <section
         id="home"
-        class="hero-section min-h-screen flex items-center justify-center text-center pt-20"
+        class="hero-section relative min-h-screen flex items-center justify-center text-center pt-20"
       >
         <div
           class="container mx-auto px-6"
@@ -655,19 +384,26 @@
           data-aos-duration="1000"
         >
           <h1
-            class="text-6xl md:text-9xl font-black font-heading text-gray-800 uppercase"
+            class="gradient-text text-6xl md:text-9xl font-black font-heading uppercase fade-in-down"
           >
             The Path to Mastery
           </h1>
-          <p class="text-lg md:text-xl text-gray-600 mt-4 max-w-3xl mx-auto">
+          <p
+            class="text-lg md:text-xl text-gray-600 mt-4 max-w-3xl mx-auto fade-in-down delay-200"
+          >
             Strength, Discipline, and Respect. Unleash your potential in an
             environment of excellence.
           </p>
           <a
             href="#classes"
-            class="btn-primary font-bold py-4 px-12 rounded-full mt-10 inline-block text-lg uppercase tracking-wider"
+            class="btn-primary font-bold py-4 px-12 rounded-full mt-10 inline-block text-lg uppercase tracking-wider fade-in-down delay-400"
             >Start Training</a
           >
+        </div>
+        <div
+          class="scroll-indicator absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        >
+          <i data-feather="chevron-down" class="h-8 w-8"></i>
         </div>
       </section>
 
@@ -783,7 +519,7 @@
                         </p>
                     </div>
                     <div class="instructor-card p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="images/rakesh_sirimg.png" alt="Shian Rakesh Ramesh Tivrekar" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-gray-200 object-cover">
+                        <img src="images/rakesh_sir.jpg" alt="Shian Rakesh Ramesh Tivrekar" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-gray-200 object-cover">
                         <h3 class="text-2xl font-bold font-heading">Shian Rakesh Ramesh Tivrekar</h3>
                         <p class="text-red-600 font-semibold">Pillar of the Dojo, <br>7rd Dan</p>
                         <p class="text-gray-500 mt-2 text-sm">Brings precision and artistry to the forms of karate. 
@@ -1085,9 +821,17 @@
     <div id="galleryModal" class="modal">
       <span id="closeGalleryBtn" class="close-btn">&times;</span>
       <div class="modal-content gallery-modal-content">
-        <img id="galleryModalImg" src="" alt="Full size gallery image" />
+        <img
+          id="galleryModalImg"
+          src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+          alt="Full size gallery image"
+        />
       </div>
     </div>
+
+    <button id="scrollTopBtn" class="scroll-to-top">
+      <i data-feather="arrow-up" class="h-5 w-5"></i>
+    </button>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -1110,14 +854,26 @@
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       mobileMenuButton.addEventListener("click", () =>
-        mobileMenu.classList.toggle("hidden")
+        mobileMenu.classList.toggle("hidden"),
       );
 
       document.querySelectorAll("#mobile-menu a").forEach((link) => {
         link.addEventListener("click", () =>
-          mobileMenu.classList.add("hidden")
+          mobileMenu.classList.add("hidden"),
         );
       });
+
+      const scrollBtn = document.getElementById("scrollTopBtn");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollBtn.classList.add("show");
+        } else {
+          scrollBtn.classList.remove("show");
+        }
+      });
+      scrollBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
     </script>
   </body>
 </html>
